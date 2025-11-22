@@ -1,0 +1,23 @@
+<h1><%= @producto.nombre %></h1>
+<p><strong>Referencia:</strong> <%= @producto.referencia %></p>
+<p><strong>Descripción:</strong> <%= @producto.descripcion.presence || "—" %></p>
+
+<p class="actions">
+  <%= link_to "Nuevo movimiento", new_movement_producto_path(@producto), class: "btn primary" %>
+  <%= link_to "Volver", productos_path, class: "btn" %>
+</p>
+
+<h2>Movimientos</h2>
+<table class="table">
+  <thead><tr><th>Fecha</th><th>Tipo</th><th>Cantidad</th><th>Comentario</th></tr></thead>
+  <tbody>
+    <% @producto.movements.order(created_at: :desc).each do |m| %>
+      <tr>
+        <td><%= l m.created_at, format: :short %></td>
+        <td><%= m.movement_kind %></td>
+        <td><%= m.quantity %></td>
+        <td><%= m.comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

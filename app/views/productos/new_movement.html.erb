@@ -1,0 +1,17 @@
+<h1>Nuevo movimiento para <%= @producto.nombre %></h1>
+
+<%= form_with model: [@producto, @movement], url: create_movement_producto_path(@producto), data: { turbo: false }, local: true do |f| %>
+  <p>
+    <%= f.label :movement_kind, "Tipo" %>
+    <%= f.select :movement_kind, Movement.movement_kinds.keys %>
+  </p>
+  <p>
+    <%= f.label :quantity, "Cantidad" %>
+    <%= f.number_field :quantity, min: 1 %>
+  </p>
+  <p>
+    <%= f.label :comment, "Comentario" %>
+    <%= f.text_area :comment, rows: 3 %>
+  </p>
+  <p><%= f.submit "Guardar", class: "btn primary" %></p>
+<% end %>

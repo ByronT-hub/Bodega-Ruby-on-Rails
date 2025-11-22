@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  producto: one
+  movement_kind: MyString
+  quantity: 1
+  comment: MyText
+
+two:
+  producto: two
+  movement_kind: MyString
+  quantity: 1
+  comment: MyText

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Bodega</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+     <% Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true %>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="container flex">
+            <div class="brand">Sistema de Bodega</div>
+            <nav class="menu">
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <% if notice.present? %>
+            <p class="flash notice"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+            <p class="flash alert"><%= alert %></p>
+        <% end %>
+
+        <%= yield %>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <%= Time.current.year %> Sistema de Bodega. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

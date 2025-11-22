@@ -1,0 +1,30 @@
+<%= form_with(model: producto) do |form| %>
+  <% if producto.errors.any? %>
+    <div class="flash alert">
+      <%= pluralize(producto.errors.count, "error") %> impidieron guardar:
+      <ul>
+        <% producto.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :referencia, "Referencia" %>
+    <%= form.text_field :referencia, required: true %>
+  </p>
+  
+  <p>
+    <%= form.label :descripcion, "Descripción" %>
+    <%= form.text_area :descripcion, rows: 4 %>
+  </p>
+
+  <p class="actions">
+    <%= form.submit (producto.persisted? ? "Actualizar" : "Crear"), class: "btn primary" %>
+    <%= link_to "Cancelar", (producto.persisted? ? producto_path(producto) : productos_path), class: "btn" %>
+  </p>
+<% end %>
